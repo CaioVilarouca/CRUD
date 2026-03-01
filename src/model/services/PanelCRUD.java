@@ -2,6 +2,8 @@ package model.services;
 
 import java.util.Scanner;
 
+import entities.User;
+
 public class PanelCRUD {
 	private int option;
 	private Scanner scanner = new Scanner(System.in);
@@ -23,6 +25,7 @@ public class PanelCRUD {
 				+ "| [2] Ler        |\n"
 				+ "| [3] Atualizar  |\n"
 				+ "| [4] Deletar    |\n"
+				+ "| [5] Conectar   |\n"
 				+ "| [0] Sair       |\n"
 				+ "==================\n"
 				+ "| Informe: ");
@@ -42,7 +45,7 @@ public class PanelCRUD {
 			System.out.println("Esse campo não aceita número negativo.");
 			return;
 		}
-		if (option > 4) {
+		if (option > 5) {
 			System.out.println("As opções são de (0 a 4).");
 			return;
 		}
@@ -74,6 +77,23 @@ public class PanelCRUD {
 				System.out.println("DELETE");
 				break;
 			}
+			case 5: {
+				userData();
+				break;
+			}
 		}
+	}
+	
+	// Dados para conectar no banco de dados
+	public void userData() {
+		System.out.println("\nConectar no banco de dados.");
+		System.out.print("\nUsuário:");
+		String admin = scanner.nextLine();
+		System.out.print("Senha:");
+		String password = scanner.nextLine();
+		System.out.print("Nome do banco dados:");
+		String nameDatabase = scanner.nextLine();
+		
+		User user = new User(admin, password, nameDatabase);
 	}
 }
