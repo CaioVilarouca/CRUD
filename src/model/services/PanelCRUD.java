@@ -36,7 +36,7 @@ public class PanelCRUD {
 		}
 	}
 	
-	// Regras de négocio
+	// Regras de négocio 
 	public void validationOption(int option) {
 		if (option < 0) {
 			System.out.println("Esse campo não aceita número negativo.");
@@ -48,7 +48,14 @@ public class PanelCRUD {
 		}
 	}
 	
-	// Painel
+	// Simulador de limpar a tela 
+	public void clearTerminal() {
+		for (int i = 0; i < 100; i++) {
+		    System.out.println();
+		}
+	}
+	
+	// Painel do CRUD e chamada de métodos
 	public void panel() {
 		switch (option) {
 			case 1: {
