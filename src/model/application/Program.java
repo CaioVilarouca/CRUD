@@ -1,10 +1,12 @@
 package model.application;
 
-import model.services.PanelCRUD;
+import java.sql.Connection;
+
+import model.db.DataBase;
 
 public class Program {
 	public static void main (String[] args) {
-		PanelCRUD panelCRUD = new PanelCRUD();
-		panelCRUD.systemPanel();
+		Connection connection = DataBase.getConnection();
+		DataBase.closeConnection();
 	}
 }
