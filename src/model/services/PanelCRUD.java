@@ -69,6 +69,10 @@ public class PanelCRUD {
 			}
 			case 3: {
 				System.out.println("UPDATE");
+				Update update = new Update();
+				update.insertUser();
+				clearTerminal();
+				System.out.println("Atualizado com sucesso!");
 				break;
 			}
 			case 4: {
