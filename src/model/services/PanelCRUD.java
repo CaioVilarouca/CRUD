@@ -30,7 +30,7 @@ public class PanelCRUD {
 		try {
 			String input = scanner.nextLine();
 			option = Integer.parseInt(input);
-			validationOption(option);
+			validationFromOption(option);
 		}
 		catch (NumberFormatException e) {
             System.out.println("Esse campo só aceita números.");
@@ -38,7 +38,7 @@ public class PanelCRUD {
 	}
 	
 	// Regras de négocio 
-	public void validationOption(int option) {
+	public void validationFromOption(int option) {
 		if (option < 0) {
 			System.out.println("Esse campo não aceita número negativo.");
 			return;
@@ -49,34 +49,23 @@ public class PanelCRUD {
 		}
 	}
 	
-	// Simulador de limpar a tela 
-	public void clearTerminal() {
-		for (int i = 0; i < 100; i++) {
-		    System.out.println();
-		}
-	}
-	
 	// Painel do CRUD e chamada de métodos
 	public void panel() {
 		switch (option) {
 			case 1: {
-				System.out.println("CREATE");
+				System.out.println("\nCREATE");
 				break;
 			}
 			case 2: {
-				System.out.println("READ");
+				System.out.println("\nREAD");
 				break;
 			}
 			case 3: {
-				System.out.println("UPDATE");
-				Update update = new Update();
-				update.insertUser();
-				clearTerminal();
-				System.out.println("Atualizado com sucesso!");
+				System.out.println("\nUPDATE");
 				break;
 			}
 			case 4: {
-				System.out.println("DELETE");
+				System.out.println("\nDELETE");
 				break;
 			}
 		}
