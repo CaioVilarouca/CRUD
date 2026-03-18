@@ -4,9 +4,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
-
 
 public class DataBase {
 	private static Connection connection = null;
@@ -54,4 +55,25 @@ public class DataBase {
 			}
 		}
 	}
+	// Método para fechar Obj Declaração 
+	public static void closeStatement(Statement statement) {
+		if (statement != null) {
+			try {
+				statement.close();
+			} catch (SQLException e) {
+				throw new DBException(e.getMessage());
+			}
+		}
+	}
+	// Método para fechar Obj Resultado a Definir 
+	public static void closeResultSet(ResultSet resultSet) {
+		if (resultSet != null) {
+			try {
+				resultSet.close();
+			} catch (SQLException e) {
+				throw new DBException(e.getMessage());
+			}
+		}
+	}
+	
 }

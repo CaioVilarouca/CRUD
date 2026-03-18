@@ -53,7 +53,8 @@ public class PanelCRUD {
 				break;
 			}
 			case 2: {
-				System.out.println("\nREAD");
+				Read read = new Read();
+				read.readDataBase();
 				break;
 			}
 			case 3: {
