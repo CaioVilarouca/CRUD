@@ -9,9 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class DataBase {
-	private static Connection connection = null;
-	
+public class DataBase {	
 	// Método para ler arquivo
 	public static Properties loadProperties() {
 		
@@ -29,23 +27,18 @@ public class DataBase {
 	
 	// Método para conectar no banco de dados
 	public static Connection getConnection() {
-		if (connection == null) {
-			
-			Properties properties = loadProperties();
-			String url = properties.getProperty("url");
-			
-			try {
-				connection = DriverManager.getConnection(url, properties);
-			} 
-			catch (SQLException e) {
-				throw new DBException(e.getMessage());
-			}
-		}
-		return connection;
-	}
+        Properties properties = loadProperties();
+        String url = properties.getProperty("url");
+
+        try {
+            return DriverManager.getConnection(url, properties);
+        } catch (SQLException e) {
+            throw new DBException(e.getMessage());
+        }
+    }
 	
 	// Método para fechar a conexão com banco de dados
-	public static void closeConnection() {
+	public static void closeConnection(Connection connection) {
 		if (connection != null) {
 			try {
 				connection.close();

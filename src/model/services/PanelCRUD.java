@@ -2,6 +2,7 @@ package model.services;
 
 import java.util.Scanner;
 
+
 public class PanelCRUD {
 	private int optionPanel;
 	private Scanner scanner = new Scanner(System.in);
@@ -49,7 +50,8 @@ public class PanelCRUD {
 	public void panel() {
 		switch (optionPanel) {
 			case 1: {
-				System.out.println("\nCREATE");
+				Create create = new Create();
+				create.createUser();
 				break;
 			}
 			case 2: {

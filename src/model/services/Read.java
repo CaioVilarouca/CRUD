@@ -16,7 +16,7 @@ public class Read { // Ler
 		try {
 			connection = DataBase.getConnection();
 			statement  = connection.createStatement();
-			resultSet = statement.executeQuery("select * from user"); // Declare e execulte uma pesquisa na tabela "user"
+			resultSet = statement.executeQuery("SELECT * FROM user"); // Declare e execulte uma pesquisa na tabela "user"
 			
 			System.out.println("\nREAD | Dados armazenados no banco de dados.\n");
 			while(resultSet.next()) {
@@ -30,7 +30,7 @@ public class Read { // Ler
 		} finally { // Como os recursos Statement e ResultSet são externos, é uma boa prática fechá-los manualmente
 			DataBase.closeResultSet(resultSet);
 			DataBase.closeStatement(statement);
-			DataBase.closeConnection();
+			DataBase.closeConnection(connection);
 		}
 	}
 }
