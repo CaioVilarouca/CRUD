@@ -3,21 +3,19 @@ package model.services;
 import java.util.Scanner;
 
 public class PanelCRUD {
-	private int option;
+	private int optionPanel;
 	private Scanner scanner = new Scanner(System.in);
-	
 	public void systemPanel() {
 		while (true) {
-			panelFromOption();
-			if (option == 0) {
+			panelOfOption();
+			if (optionPanel == 0) { // 	Regra de saída do loop 
 				System.out.println("CRUD encerrado com sucesso!");
 	            break;
 	        }		
 			panel();
 		}
 	}
-	
-	public void panelFromOption(){
+	public void panelOfOption(){
 		System.out.print("==================\n"
 				+ "| [1] Criar      |\n"
 				+ "| [2] Ler        |\n"
@@ -28,15 +26,14 @@ public class PanelCRUD {
 				+ "| Informe: ");
 		
 		try {
-			String input = scanner.nextLine();
-			option = Integer.parseInt(input);
-			validationFromOption(option);
+			String inputInformation = scanner.nextLine();
+			optionPanel = Integer.parseInt(inputInformation);
+			validationFromOption(optionPanel);
 		}
 		catch (NumberFormatException e) {
             System.out.println("Esse campo só aceita números.");
 		}
 	}
-	
 	// Regras de négocio 
 	public void validationFromOption(int option) {
 		if (option < 0) {
@@ -48,10 +45,9 @@ public class PanelCRUD {
 			return;
 		}
 	}
-	
 	// Painel do CRUD e chamada de métodos
 	public void panel() {
-		switch (option) {
+		switch (optionPanel) {
 			case 1: {
 				System.out.println("\nCREATE");
 				break;
