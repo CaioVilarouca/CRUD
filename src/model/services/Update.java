@@ -3,6 +3,7 @@ package model.services;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.db.DataBase;
@@ -20,13 +21,10 @@ public class Update {
 			prepareStatement = connection.prepareStatement("UPDATE user SET name=?, email=? WHERE id=?");
 			
 			User user = updateUser();
-			System.out.print("Informe o ID: ");
-	        String iDString = scanner.next();
-	        int id = Integer.parseInt(iDString);
 			
 			prepareStatement.setString(1, user.getName()); 
 			prepareStatement.setString(2, user.getEmail()); 
-			prepareStatement.setInt(3, id); // id
+			prepareStatement.setInt(3, user.getId()); // id
 			
 			int rowAffected = prepareStatement.executeUpdate();
 			System.out.println("Linhas atualizadas: " + rowAffected);
@@ -37,8 +35,8 @@ public class Update {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (NumberFormatException e) {
-			System.out.println("Erro na entrada do ID.");
+		} catch (InputMismatchException e) {
+			System.out.println("Erro na entrada do Id.");
 		} finally {
 			DataBase.closeStatement(prepareStatement);
 			DataBase.closeConnection(connection);
@@ -52,7 +50,11 @@ public class Update {
 
         System.out.print("Informe o email: ");
         String email = scanner.nextLine();
+        
+        System.out.print("Informe o ID: ");
+        int id = scanner.nextInt();
+        
        
-        return new User(name, email);
+        return new User(name, email, id);
 	}
 }

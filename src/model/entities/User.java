@@ -3,12 +3,19 @@ package model.entities;
 public class User {
 	private String name;
 	private String email;
+	private Integer id;
 	
 	public User() {}
 
 	public User(String name, String email) {
 		this.name = name;
 		this.email = email;
+	}
+	
+	public User(String name, String email, int id) {
+		this.name = name;
+		this.email = email;
+		this.id = id;
 	}
 
 	public String getName() {
@@ -25,5 +32,13 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }
