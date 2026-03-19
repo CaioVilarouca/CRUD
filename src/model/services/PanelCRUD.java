@@ -60,7 +60,8 @@ public class PanelCRUD {
 				break;
 			}
 			case 3: {
-				System.out.println("\nUPDATE");
+				Update update = new Update();
+				update.updateDataBase();
 				break;
 			}
 			case 4: {

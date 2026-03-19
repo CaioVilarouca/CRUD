@@ -20,7 +20,6 @@ public class Create {
             preparedStatement = connection.prepareStatement("INSERT INTO user (name, email) VALUES (?, ?)");
             
             User user = collectUserInformation();
-
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getEmail());
 
