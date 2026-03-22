@@ -65,7 +65,8 @@ public class PanelCRUD {
 				break;
 			}
 			case 4: {
-				System.out.println("\nDELETE");
+				Delete delete = new Delete();
+				delete.deleteDataBase();
 				break;
 			}
 		}
